@@ -19,7 +19,7 @@
 |
 */
 
-require __DIR__.'/local/bootstrap/autoload.php';
+require __DIR__.'/local/bootstrap/autoload.php'; 
 
 /*
 |--------------------------------------------------------------------------
