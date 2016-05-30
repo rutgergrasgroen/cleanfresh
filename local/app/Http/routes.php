@@ -15,7 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::auth();
+//Route::auth();
+
+Route::post('/admin/login', 'Auth\AuthController@login');
+Route::get('/admin/login',  'Auth\AuthController@showLoginForm');
+Route::get('/admin/logout', 'Auth\AuthController@logout');
 
 Route::get('/admin', 'AdminController@index');
 Route::get('/{slug?}', 'PagesController@show');
