@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/{slug?}', function ($slug) {
-    return view('page')->with('slug', $slug);
-});
+Route::auth();
+
+Route::get('/admin', 'AdminController@index');
+Route::get('/{slug?}', 'PagesController@show');
