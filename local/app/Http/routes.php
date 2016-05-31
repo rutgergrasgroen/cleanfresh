@@ -17,9 +17,13 @@ Route::get('/', function () {
 
 //Route::auth();
 
-Route::post('/admin/login', 'Auth\AuthController@login');
-Route::get('/admin/login',  'Auth\AuthController@showLoginForm');
-Route::get('/admin/logout', 'Auth\AuthController@logout');
 
-Route::get('/admin', 'AdminController@index');
+Route::post('/admin/login', 'Admin\AuthController@login');
+Route::get('/admin/login',  'Admin\AuthController@showLoginForm');
+Route::get('/admin/logout', 'Admin\AuthController@logout');
+
+Route::get('/admin', 'Admin\AdminController@index');
+Route::get('/admin/Pages', 'Admin\PagesController@index');
+Route::delete('/admin/Pages/Delete/{id}', 'Admin\PagesController@delete');
+
 Route::get('/{slug?}', 'PagesController@show');
