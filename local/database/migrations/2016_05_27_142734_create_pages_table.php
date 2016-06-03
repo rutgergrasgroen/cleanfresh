@@ -16,7 +16,10 @@ class CreatePagesTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('slug')->unique();
-            $table->timestamp('created_at');
+            $table->string('link');
+            $table->string('seo_title');
+            $table->string('seo_description');
+            $table->timestamps();
         });
     }
 

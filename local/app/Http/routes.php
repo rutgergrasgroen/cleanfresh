@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
 
 //Route::auth();
@@ -23,7 +23,14 @@ Route::get('/admin/login',  'Admin\AuthController@showLoginForm');
 Route::get('/admin/logout', 'Admin\AuthController@logout');
 
 Route::get('/admin', 'Admin\AdminController@index');
+
 Route::get('/admin/Pages', 'Admin\PagesController@index');
+Route::get('/admin/Pages/Edit/{id}', 'Admin\PagesController@edit');
+Route::post('/admin/Pages/Edit/{id}', 'Admin\PagesController@update');
+Route::get('/admin/Pages/Edit/{id}/Content', 'Admin\PagesController@editContent');
+Route::post('/admin/Pages/Edit/{id}/Content', 'Admin\PagesController@updateContent');
+Route::get('/admin/Pages/Edit/{id}/Image', 'Admin\PagesController@editImage');
+Route::post('/admin/Pages/Edit/{id}/Image', 'Admin\PagesController@updateImage');
 Route::delete('/admin/Pages/Delete/{id}', 'Admin\PagesController@delete');
 
 Route::get('/{slug?}', 'PagesController@show');

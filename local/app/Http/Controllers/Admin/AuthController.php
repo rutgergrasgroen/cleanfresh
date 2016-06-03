@@ -40,6 +40,18 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    public function showLoginForm()
+    {
+        $view = property_exists($this, 'loginView')
+                    ? $this->loginView : 'auth.authenticate';
+
+        if (view()->exists($view)) {
+            return view($view);
+        }
+
+        return view('admin.login');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *
