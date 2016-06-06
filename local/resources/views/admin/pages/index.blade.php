@@ -8,39 +8,51 @@
 
             <h1 class="page-header">Pagina's</h1>
 
-            <ul class="list-group">
+            <a class="btn btn-primary" data-toggle="modal" data-target="#addPage">Nieuwe pagina toevoegen</a>
+
+            <div id="addPage" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Nieuwe pagina toevoegen</h4>
+                    </div>
+                    <form role="form" method="POST" action="{{ url('admin/Pages') }}">
+                        <div class="modal-body">
+                            {!! csrf_field() !!}
+                            {{ method_field('POST') }}
+                            <div class="form-group">
+                                <label>Pagina titel</label>
+                                <input class="form-control" name="title" type="text">
+                            </div>       
+                            <div class="form-group">
+                                <label>Pagina template</label>
+                                <input class="form-control" name="template" type="text">
+                            </div>                   
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">Annuleren</button>
+                            <button type="submit" class="btn btn-success">Toevoegen</button>
+                        </div>
+                    </form>
+                </div>
+
+                </div>
+            </div>
+
+            <p>&nbsp;</p>
+
+            <ol class="list-group sortable">
 
                 @foreach($pages as $id => $page)
 
-                    <li class="list-group-item">
-
-                        <span class="fa fa-arrows text-muted padding-right"></span>
-
-                        <a href="Pages/Status/{{ $page->id }}" class="btn btn-outline btn-default" data-method="delete" data-token="{{csrf_token()}}" data-confirm="Zeker weten?">
-                            <span class="fa fa-file-text-o" aria-hidden="true"></span> 
-                        </a>
-
-                        <strong class="padding"> 
-                            {{ $page->title }}
-                        </strong>
-
-                        <div class="pull-right">
-                            <a href="Pages/Status/{{ $page->id }}" class="btn btn-outline btn-info margin-left" data-method="delete" data-token="{{csrf_token()}}" data-confirm="Zeker weten?">
-                                <span class="fa fa-eye" aria-hidden="true"></span>
-                            </a> 
-                            <a href="Pages/Edit/{{ $page->id }}" class="btn btn-outline btn-warning margin-left" data-method="delete" data-token="{{csrf_token()}}" data-confirm="Zeker weten?">
-                                <span class="fa fa-edit" aria-hidden="true"></span>
-                            </a>
-                            <a href="Pages/Delete/{{ $page->id }}" class="btn btn-outline btn-danger margin-left" data-method="delete" data-token="{{csrf_token()}}" data-confirm="Zeker weten?">
-                                <span class="fa fa-trash" aria-hidden="true"></span>
-                            </a>
-                        </div>
-
-                    </li>
+                    @include('admin.pages.partialPage', $page)
 
                 @endforeach
 
-            </ul>
+            </ol>
             
         </div>
         

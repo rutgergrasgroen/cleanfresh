@@ -20,4 +20,35 @@
   margin-bottom: 0;
   margin-top: 30px; }
 
+.sortable {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  .sortable ol {
+    list-style: none;
+    padding: 0;
+    margin-left: 35px; }
+  .sortable .placeholder {
+    background-color: #dfdfdf;
+    padding: 0 15px; }
+  .sortable .list-item {
+    list-style: none;
+    padding: 0; }
+    .sortable .list-item > div {
+      padding: 10px 15px 10px 54px;
+      position: relative;
+      width: auto;
+      background-color: #fdfdfd;
+      border: 1px solid #ddd;
+      display: block;
+      margin-bottom: -1px; }
+      .sortable .list-item > div a[disabled] {
+        cursor: default !important; }
+      .sortable .list-item > div .handle {
+        left: 2px;
+        padding: 18px;
+        position: absolute;
+        top: 2px;
+        cursor: move; }
+
 /*# sourceMappingURL=admin.css.map */

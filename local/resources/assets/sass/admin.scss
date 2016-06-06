@@ -27,4 +27,51 @@
 	margin-top: 30px;
 }
 
+.sortable {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    ol {
+        list-style: none;
+        padding: 0;
+        margin-left: 35px; 
+    }
+
+    .placeholder {
+        background-color: #dfdfdf;
+        padding: 0 15px;
+    }
+
+    .list-item {
+        list-style: none;
+        padding:0;
+
+        > div {
+            padding: 10px 15px 10px 54px;
+            position: relative;
+            width: auto;
+            background-color: #fdfdfd;
+            border: 1px solid #ddd;
+            display: block;
+            margin-bottom: -1px;
+
+            a[disabled] {
+                cursor: default !important;
+            }
+
+            .handle {
+                left: 2px;
+                padding: 18px;
+                position: absolute;
+                top: 2px;
+                cursor: move;
+            }
+
+        }
+
+    }
+
+}
+
 

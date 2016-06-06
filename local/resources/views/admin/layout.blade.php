@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700" rel='stylesheet' type='text/css'>
 
     <!-- Styles -->
-    <link href="/cleanfresh/local/public/assets/css/admin.css" rel="stylesheet">
+    <link href="{{ asset('/local/public/assets/css/admin.css') }}" rel="stylesheet">
 
     <style>
         body {
@@ -84,14 +84,16 @@
 
         @endif
 
-        <div id="page-wrapper">
+        @if(!Auth::guest()) 
+            <div id="page-wrapper">
+        @endif
 
             @if (session('alert'))
                 <div class="row">
 
                     <div class="col-lg-12">
 
-                        <div class="alert {{ session('alert')['class'] }} alert-dismissable">
+                        <div class="alert alert-{{ session('alert')['class'] }} alert-dismissable">
                             <button class="close" aria-hidden="true" data-dismiss="alert" type="button">×</button>
                             {{ session('alert')['html'] }}
                         </div>
@@ -103,11 +105,15 @@
 
             @yield('content')   
 
-        </div>
+        @if(!Auth::guest()) 
+            </div>
+        @endif
 
     </div>
 
     <!-- JavaScripts -->
-    <script src="/cleanfresh/local/public/assets/js/admin.js"></script>
+    <meta name="_token" content="{!! csrf_token() !!}" />
+    <meta name="_siteurl" content="{!! url('/') !!}" />
+    <script src="{{ asset('/local/public/assets/js/admin.js') }}"></script>
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Validator;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -27,9 +28,101 @@ class PagesController extends Controller
     public function index()
     {
 
-        $pages = \App\Pages::all();
+        $mainPages = \App\Pages::where('parent', 0)->get();
 
-        return view('admin/pages/index')->with('pages', $pages);
+        $pages = $this->getAllPages($mainPages);
+
+        return view('admin/pages/index')
+            ->with('pages', $pages);
+    }
+
+    private function getAllPages($pages) {
+        $allPages = [];
+
+        foreach ($pages as $page) {
+            $subArr = array();
+            $subArr['id'] = $page->id;
+            $subArr['title'] = $page->title;
+            $subArr['slug'] = $page->slug;
+            $subPages = \App\Pages::where('parent', '=', $page->id)
+                        ->get();
+
+            if (!$subPages->isEmpty()) {
+                $result = $this->getAllPages($subPages);
+
+                $subArr['children'] = $result;
+            } else {
+                $subArr['children'] = [];
+            }
+
+            $allPages[] = $subArr;
+
+        }
+
+        return $allPages;
+    }
+
+    public function store(Request $request)
+    {
+
+        $page = new \App\Pages;
+
+        $validator = Validator::make($request->all(), $page->rules);
+
+        if($validator->fails()) {
+
+            $alert = array(
+                'html' => 'De pagina titel mag niet leeg zijn. Probeer het aub nog een keer en vul dan een pagina titel in.',
+                'class' => 'danger'
+            );
+
+            return redirect('admin/Pages')
+                ->with([
+                    'alert' => $alert
+                ])
+                ->withErrors($validator)
+                ->withInput();
+
+        } else {
+
+            $page->title = $request->input('title');
+            $page->template = $request->input('template');
+            $page->save();
+
+            $alert = array(
+                'html' => 'Pagina \''.$page->title.'\' is succesvol toegevoegd.',
+                'class' => 'success'
+            );
+
+            return redirect()->action('Admin\PagesController@edit', $page->id)
+                ->with([
+                    'alert' => $alert
+                ]);
+
+        }
+
+    }
+
+    public function saveOrder(Request $request)
+    {
+
+        print_r($request->order);
+
+        foreach ($request->order as $position => $order){
+
+            if(isset($order['id']) && $order['id'] > 0) {
+
+                $page = \App\Pages::findOrFail($order['id']);
+
+                $page->depth = $order['depth'];
+                $page->position = $position;
+                $page->parent = $order['parent_id'];
+                $page->save();
+
+            }
+            
+        }
+
     }
 
     public function edit($id)
@@ -62,15 +155,14 @@ class PagesController extends Controller
         $page = \App\Pages::findOrFail($id);
 
         $page->title = $request->input('title');
-        $page->slug = str_slug($request->input('title'));
         $page->link = $request->input('link');
         $page->seo_title = $request->input('seo_title');
         $page->seo_description = $request->input('seo_description');
         $page->save();
 
         $alert = array(
-            'html' => 'Pop-up \''.$page->title.'\' is succesvol opgeslagen.',
-            'class' => 'alert-success'
+            'html' => 'Pagina \''.$page->title.'\' is succesvol opgeslagen.',
+            'class' => 'success'
         );
 
         return redirect()->action('Admin\PagesController@edit', $id)

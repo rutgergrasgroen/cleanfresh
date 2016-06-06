@@ -23,10 +23,13 @@ elixir(function(mix) {
     ], 'public/assets/css/admin.css', './');
     mix.scripts([
         'bower_components/jquery/dist/jquery.js',
+        'bower_components/jquery-ui/jquery-ui.js',
         'bower_components/bootstrap/dist/js/bootstrap.js',
+        'resources/assets/js/jquery.mjs.nestedSortable.js',
         'bower_components/Chart.js/dist/Chart.js',
         'bower_components/metisMenu/dist/metisMenu.js',
         'bower_components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js',
+        'resources/assets/js/admin.js'
     ], 'public/assets/js/admin.js', './');
 });
 

@@ -17,8 +17,13 @@ class CreatePagesTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('link');
+            $table->string('template');
             $table->string('seo_title');
             $table->string('seo_description');
+            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('position')->default(0);
+            $table->tinyInteger('parent')->default(0);
+            $table->tinyInteger('depth')->default(0);
             $table->timestamps();
         });
     }
