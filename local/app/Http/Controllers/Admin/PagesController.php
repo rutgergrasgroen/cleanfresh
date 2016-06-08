@@ -46,6 +46,7 @@ class PagesController extends Controller
             $subArr['id'] = $page->id;
             $subArr['title'] = $page->title;
             $subArr['slug'] = $page->slug;
+            $subArr['status'] = $page->status;
             $subPages = \App\Pages::where('parent', '=', $page->id)
                         ->get();
 
@@ -122,6 +123,27 @@ class PagesController extends Controller
             }
             
         }
+
+    }
+
+    public function saveStatus(Request $request)
+    {
+
+        $page = \App\Pages::where('id', '=', $request->id)->first();
+
+        if($page->status == 1) {
+
+            $page->status = 0;
+
+        } else {
+
+            $page->status = 1;
+
+        }
+
+        $page->save();
+
+        return $page->status;
 
     }
 

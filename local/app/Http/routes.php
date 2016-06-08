@@ -27,6 +27,7 @@ Route::get('/admin', 'Admin\AdminController@index');
 Route::get('/admin/Pages', 'Admin\PagesController@index');
 Route::post('/admin/Pages', 'Admin\PagesController@store');
 Route::post('/admin/Pages/SaveOrder', 'Admin\PagesController@saveOrder');
+Route::post('/admin/Pages/SaveStatus', 'Admin\PagesController@saveStatus');
 Route::get('/admin/Pages/Edit/{id}', 'Admin\PagesController@edit');
 Route::post('/admin/Pages/Edit/{id}', 'Admin\PagesController@update');
 Route::get('/admin/Pages/Edit/{id}/Content', 'Admin\PagesController@editContent');

@@ -20,7 +20,7 @@ class CreatePagesTable extends Migration
             $table->string('template');
             $table->string('seo_title');
             $table->string('seo_description');
-            $table->tinyInteger('status')->default(0);
+            $table->tinyInteger('status')->default(1);
             $table->tinyInteger('position')->default(0);
             $table->tinyInteger('parent')->default(0);
             $table->tinyInteger('depth')->default(0);

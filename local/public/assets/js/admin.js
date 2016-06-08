@@ -39777,6 +39777,15 @@ Exemples :
 
 $(document).ready(function(){
 
+    var siteurl = $('meta[name="_siteurl"]').attr('content');
+    var token = $('meta[name="_token"]').attr('content');
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': token
+        }
+    });
+
     $('ol.sortable').nestedSortable({
         forcePlaceholderSize: true,
         handle: '.handle',
@@ -39794,14 +39803,6 @@ $(document).ready(function(){
         startCollapsed: true,
         update: function () {
             order = $(this).nestedSortable('toArray', {startDepthCount: 0});
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            });
-
-            siteurl = $('meta[name="_siteurl"]').attr('content');
 
             $.ajax({
 
@@ -39822,6 +39823,33 @@ $(document).ready(function(){
         $(this).closest('li').toggleClass('mjs-nestedSortable-collapsed').toggleClass('mjs-nestedSortable-expanded');
         $(this).children().toggleClass('fa-folder-open').toggleClass('fa-folder');
     });
+
+    $('.status').on('click', function() {
+
+        var id = $(this).closest('li').attr("data-id");
+        var item = $(this);
+
+        $.ajax({
+
+            type: 'POST',
+            url: siteurl +'/admin/Pages/SaveStatus',
+            data: {
+                'id': id
+            },
+            dataType: 'json',
+            success: function(data) {
+
+                if(data == 1) {
+                    item.removeClass('btn-default').addClass('btn-info');
+                } else {
+                    item.removeClass('btn-info').addClass('btn-default');
+                }
+                
+            }
+
+        });
+
+    });
  
 });
 
@@ -39830,9 +39858,10 @@ function fixFolderIcons(){
     setTimeout(function(){
 
         $("ol.sortable .mjs-nestedSortable-leaf").children('div').children('.icon').removeClass('disclose').attr("disabled", true).children().removeClass('fa-folder-open').removeClass('fa-folder').addClass('fa-file-text-o');
-        $("ol.sortable .mjs-nestedSortable-branch").children('div').children('.icon').addClass('disclose').removeAttr('disabled').children().removeClass('fa-file-text-o').addClass('fa-folder-open');
+        $("ol.sortable .mjs-nestedSortable-branch").children('div').children('.icon').addClass('disclose').removeAttr('disabled').children().removeClass('fa-file-text-o').not('.fa-folder').addClass('fa-folder-open');
 
     }, 500);
 
 }
+
 //# sourceMappingURL=admin.js.map
