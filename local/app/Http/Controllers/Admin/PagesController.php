@@ -28,7 +28,9 @@ class PagesController extends Controller
     public function index()
     {
 
-        $mainPages = \App\Pages::where('parent', 0)->get();
+        $mainPages = \App\Pages::where('parent', 0)
+            ->orderBy('position')
+            ->get();
 
         $pages = $this->getAllPages($mainPages);
 
@@ -40,7 +42,7 @@ class PagesController extends Controller
         $allPages = [];
 
         foreach ($pages as $page) {
-            $subArr = array();
+            $subArr = [];
             $subArr['id'] = $page->id;
             $subArr['title'] = $page->title;
             $subArr['slug'] = $page->slug;
@@ -105,8 +107,6 @@ class PagesController extends Controller
 
     public function saveOrder(Request $request)
     {
-
-        print_r($request->order);
 
         foreach ($request->order as $position => $order){
 

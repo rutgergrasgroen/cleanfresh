@@ -48,7 +48,7 @@
 
                 @foreach($pages as $id => $page)
 
-                    @include('admin.pages.partialPage', $page)
+                    @include('admin.pages.partialPageLister', $page)
 
                 @endforeach
 
