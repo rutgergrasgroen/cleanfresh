@@ -3,8 +3,14 @@
     <div>
         <span class="fa fa-arrows text-muted padding-right handle"></span>
 
-        <a class="btn btn-outline btn-default" disabled>
-            <span class="fa fa-file-text-o" aria-hidden="true"></span> 
+        
+        @if(count($page['children']) > 0)
+            <a class="btn btn-outline btn-default icon disclose">
+                <span class="fa fa-folder text-muted" aria-hidden="true"></span> 
+        @else
+            <a class="btn btn-outline btn-default icon disclose" disabled>
+                <span class="fa fa-file-text-o text-muted" aria-hidden="true"></span> 
+        @endif
         </a>
 
         <strong class="padding"> 
@@ -32,7 +38,7 @@
         <ol>
 
             @foreach($page['children'] as $page)
-                @include('admin.pages.partialPage', $page)
+                @include('admin.pages.partialPageLister', $page)
             @endforeach
 
         </ol>

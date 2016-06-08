@@ -50,5 +50,12 @@
         position: absolute;
         top: 2px;
         cursor: move; }
+      .sortable .list-item > div .disclose {
+        cursor: pointer !important; }
+    .sortable .list-item ol,
+    .sortable .list-item.mjs-nestedSortable-collapsed > ol {
+      display: none; }
+    .sortable .list-item.mjs-nestedSortable-expanded > ol {
+      display: block; }
 
 /*# sourceMappingURL=admin.css.map */

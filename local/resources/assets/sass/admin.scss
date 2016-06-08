@@ -68,8 +68,20 @@
                 cursor: move;
             }
 
+            .disclose {
+                cursor: pointer !important;
+            }
+
         }
 
+        ol,
+        &.mjs-nestedSortable-collapsed > ol {
+            display: none;
+        }
+
+        &.mjs-nestedSortable-expanded > ol {
+            display: block;
+        }
     }
 
 }
