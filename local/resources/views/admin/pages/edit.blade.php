@@ -12,9 +12,9 @@
         <div class="col-lg-12">
 
             <ul class="nav nav-tabs">
-                <li class="active"><a href="{{ url('admin/Pages/Edit', [$page->id]) }}">Algemeen</a></li>
-                <li><a href="{{ url('admin/Pages/Edit', [$page->id]) }}/Content">Inhoud</a></li>
-                <li><a href="{{ url('admin/Pages/Edit', [$page->id]) }}/Image">Gekoppelde afbeelding</a></li>
+                <li class="active"><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}">Algemeen</a></li>
+                <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Content">Inhoud</a></li>
+                <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Image">Gekoppelde afbeelding</a></li>
             </ul>
 
             <p>&nbsp;</p>
@@ -22,7 +22,7 @@
         </div>
 
 
-        <form role="form" method="POST" action="{{ url('admin/Pages/Edit', [$page->id]) }}">
+        <form role="form" method="POST" action="{{ url('cfadmin/Pages/Edit', [$page->id]) }}">
             {!! csrf_field() !!}
             {{ method_field('POST') }}
             <div class="col-lg-6">

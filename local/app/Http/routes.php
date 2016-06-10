@@ -18,23 +18,23 @@ Route::get('/', function () {
 //Route::auth();
 
 
-Route::post('/admin/login', 'Admin\AuthController@login');
-Route::get('/admin/login',  'Admin\AuthController@showLoginForm');
-Route::get('/admin/logout', 'Admin\AuthController@logout');
+Route::post('/cfadmin/login', 'Admin\AuthController@login');
+Route::get('/cfadmin/login',  'Admin\AuthController@showLoginForm');
+Route::get('/cfadmin/logout', 'Admin\AuthController@logout');
 
-Route::get('/admin', 'Admin\AdminController@index');
+Route::get('/cfadmin', 'Admin\AdminController@index');
 
-Route::get('/admin/Pages', 'Admin\PagesController@index');
-Route::post('/admin/Pages', 'Admin\PagesController@store');
-Route::post('/admin/Pages/SaveOrder', 'Admin\PagesController@saveOrder');
-Route::post('/admin/Pages/SaveStatus', 'Admin\PagesController@saveStatus');
-Route::get('/admin/Pages/Edit/{id}', 'Admin\PagesController@edit');
-Route::post('/admin/Pages/Edit/{id}', 'Admin\PagesController@update');
-Route::get('/admin/Pages/Edit/{id}/Content', 'Admin\PagesController@editContent');
-Route::post('/admin/Pages/Edit/{id}/Content', 'Admin\PagesController@updateContent');
-Route::get('/admin/Pages/Edit/{id}/Image', 'Admin\PagesController@editImage');
-Route::post('/admin/Pages/Edit/{id}/Image', 'Admin\PagesController@updateImage');
-Route::delete('/admin/Pages/Delete/{id}', 'Admin\PagesController@delete');
+Route::get('/cfadmin/Pages', 'Admin\PagesController@index');
+Route::post('/cfadmin/Pages', 'Admin\PagesController@store');
+Route::post('/cfadmin/Pages/SaveOrder', 'Admin\PagesController@saveOrder');
+Route::post('/cfadmin/Pages/SaveStatus', 'Admin\PagesController@saveStatus');
+Route::get('/cfadmin/Pages/Edit/{id}', 'Admin\PagesController@edit');
+Route::post('/cfadmin/Pages/Edit/{id}', 'Admin\PagesController@update');
+Route::get('/cfadmin/Pages/Edit/{id}/Content', 'Admin\PagesController@editContent');
+Route::post('/cfadmin/Pages/Edit/{id}/Content', 'Admin\PagesController@updateContent');
+Route::get('/cfadmin/Pages/Edit/{id}/Image', 'Admin\PagesController@editImage');
+Route::post('/cfadmin/Pages/Edit/{id}/Image', 'Admin\PagesController@updateImage');
+Route::delete('/cfadmin/Pages/Delete/{id}', 'Admin\PagesController@delete');
 
 Route::get('/{slug?}', 'PagesController@show')
     ->where(['slug' => '.*']);

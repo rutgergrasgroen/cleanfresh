@@ -79,7 +79,7 @@ class PagesController extends Controller
                 'class' => 'danger'
             );
 
-            return redirect('admin/Pages')
+            return redirect('cfadmin/Pages')
                 ->with([
                     'alert' => $alert
                 ])

@@ -11,7 +11,7 @@
                     </div>
                     <div class="panel-body">
 
-                        <form role="form" method="POST" action="{{ url('/admin/login') }}">
+                        <form role="form" method="POST" action="{{ url('/cfadmin/login') }}">
                             {!! csrf_field() !!}
                             <fieldset>
                                 <div class="form-group">

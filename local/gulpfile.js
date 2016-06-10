@@ -19,6 +19,7 @@ elixir(function(mix) {
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/font-awesome/css/font-awesome.css',
         'bower_components/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css',
+        'bower_components/startbootstrap-sb-admin-2/dist/css/timeline.css',
         'public/css/admin.css'
     ], 'public/assets/css/admin.css', './');
     mix.scripts([

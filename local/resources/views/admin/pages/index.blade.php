@@ -19,7 +19,7 @@
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                         <h4 class="modal-title">Nieuwe pagina toevoegen</h4>
                     </div>
-                    <form role="form" method="POST" action="{{ url('admin/Pages') }}">
+                    <form role="form" method="POST" action="{{ url('cfadmin/Pages') }}">
                         <div class="modal-body">
                             {!! csrf_field() !!}
                             {{ method_field('POST') }}

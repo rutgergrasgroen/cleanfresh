@@ -38,7 +38,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="{{ url('/admin') }}"><i class="fa fa-cloud"></i> Clean&Fresh</a>
+                    <a class="navbar-brand" href="{{ url('/cfadmin') }}"><i class="fa fa-cloud"></i> Clean&Fresh</a>
                 </div>
                 <!-- /.navbar-header -->
 
@@ -49,12 +49,12 @@
                             <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
                         </a>
                         <ul class="dropdown-menu dropdown-user">
-                            <li><a href="{{ url('/admin/Account') }}"><i class="fa fa-user fa-fw"></i> Mijn account</a>
+                            <li><a href="{{ url('/cfadmin/Account') }}"><i class="fa fa-user fa-fw"></i> Mijn account</a>
                             </li>
-                            <li><a href="{{ url('/admin/Settings') }}"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
+                            <li><a href="{{ url('/cfadmin/Settings') }}"><i class="fa fa-gear fa-fw"></i> Instellingen</a>
                             </li>
                             <li class="divider"></li>
-                            <li><a href="{{ url('/admin/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                            <li><a href="{{ url('/cfadmin/logout') }}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
                             </li>
                         </ul>
                         <!-- /.dropdown-user -->
@@ -67,13 +67,19 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a href="{{ url('/admin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                                <a href="{{ url('/cfadmin') }}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/Pages') }}"><i class="fa fa-edit fa-fw"></i> Pagina's</a>
+                                <a href="{{ url('/cfadmin/Pages') }}"><i class="fa fa-edit fa-fw"></i> Pagina's</a>
                             </li>
                             <li>
-                                <a href="{{ url('/admin/Forms') }}"><i class="fa fa-edit fa-fw"></i> Formulieren</a>
+                                <a href="{{ url('/cfadmin/Media') }}"><i class="fa fa-image fa-fw"></i> Media</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/cfadmin/Forms') }}"><i class="fa fa-envelope-o fa-fw"></i> Formulieren</a>
+                            </li>
+                            <li>
+                                <a href="{{ url('/cfadmin/Stats') }}"><i class="fa fa-bar-chart-o fa-fw"></i> Statistieken</a>
                             </li>
                         </ul>
                     </div>
