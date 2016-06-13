@@ -7,7 +7,7 @@ use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-class PagesController extends Controller
+class SettingsController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -38,32 +38,6 @@ class PagesController extends Controller
             ->with('pages', $pages);
     }
 
-    private function getAllPages($pages) {
-        $allPages = [];
-
-        foreach ($pages as $page) {
-            $subArr = [];
-            $subArr['id'] = $page->id;
-            $subArr['title'] = $page->title;
-            $subArr['slug'] = $page->slug;
-            $subArr['status'] = $page->status;
-            $subPages = \App\Pages::where('parent', '=', $page->id)
-                        ->get();
-
-            if (!$subPages->isEmpty()) {
-                $result = $this->getAllPages($subPages);
-
-                $subArr['children'] = $result;
-            } else {
-                $subArr['children'] = [];
-            }
-
-            $allPages[] = $subArr;
-
-        }
-
-        return $allPages;
-    }
 
     public function store(Request $request)
     {
@@ -106,46 +80,6 @@ class PagesController extends Controller
 
     }
 
-    public function saveOrder(Request $request)
-    {
-
-        foreach ($request->order as $position => $order){
-
-            if(isset($order['id']) && $order['id'] > 0) {
-
-                $page = \App\Pages::findOrFail($order['id']);
-
-                $page->depth = $order['depth'];
-                $page->position = $position;
-                $page->parent = $order['parent_id'];
-                $page->save();
-
-            }
-            
-        }
-
-    }
-
-    public function saveStatus(Request $request)
-    {
-
-        $page = \App\Pages::where('id', '=', $request->id)->first();
-
-        if($page->status == 1) {
-
-            $page->status = 0;
-
-        } else {
-
-            $page->status = 1;
-
-        }
-
-        $page->save();
-
-        return $page->status;
-
-    }
 
     public function edit($id)
     {
@@ -155,21 +89,6 @@ class PagesController extends Controller
         return view('admin/pages/edit')->with('page', $page);
     }
 
-    public function editContent($id)
-    {
-
-        $page = \App\Pages::where('id', '=', $id)->first();
-
-        return view('admin/pages/editContent')->with('page', $page);
-    }
-
-    public function editImage($id)
-    {
-
-        $page = \App\Pages::where('id', '=', $id)->first();
-
-        return view('admin/pages/editImage')->with('page', $page);
-    }
 
     public function update(Request $request, $id)
     {
@@ -193,12 +112,5 @@ class PagesController extends Controller
             ]);
     }
 
-    // Delete a page
-    public function delete(Request $request)
-    {
-
-        return \App\Pages::where('id', '=', $request->id)->delete();
-
-    }
 }
 

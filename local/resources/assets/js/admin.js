@@ -38,7 +38,7 @@ $(document).ready(function(){
             $.ajax({
 
                 type: 'POST',
-                url: siteurl +'/admin/Pages/SaveOrder',
+                url: siteurl +'/cfadmin/Pages/SaveOrder',
                 data: {
                     'order': order
                 },
@@ -55,7 +55,7 @@ $(document).ready(function(){
         $(this).children().toggleClass('fa-folder-open').toggleClass('fa-folder');
     });
 
-    $('.status').on('click', function() {
+    $('.list-item .status').on('click', function() {
 
         var id = $(this).closest('li').attr("data-id");
         var item = $(this);
@@ -63,7 +63,7 @@ $(document).ready(function(){
         $.ajax({
 
             type: 'POST',
-            url: siteurl +'/admin/Pages/SaveStatus',
+            url: siteurl +'/cfadmin/Pages/SaveStatus',
             data: {
                 'id': id
             },
@@ -79,6 +79,45 @@ $(document).ready(function(){
             }
 
         });
+
+    });
+
+    $('.list-item .delete').on('click', function() {
+
+        var item = $(this).closest('li');
+
+        bootbox.dialog({
+            message: "Weet je zeker dat je deze pagina wilt verwijderen?",
+            title: "Pagina verwijderen",
+            buttons: {
+                main: {
+                    label: "Annuleren",
+                    className: "btn-default"
+                },
+                danger: {
+                    label: "Verwijderen",
+                    className: "btn-danger",
+                    callback: function() {
+
+                        $.ajax({
+
+                            type: 'POST',
+                            url: siteurl +'/cfadmin/Pages/Delete',
+                            data: {
+                                'id': item.attr("data-id")
+                            },
+                            dataType: 'json',
+                            success: function(data) {
+
+                                item.remove();
+                                
+                            }
+
+                        });
+                    }
+                }
+            }
+        }); 
 
     });
  

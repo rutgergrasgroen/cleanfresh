@@ -121,5 +121,8 @@
     <meta name="_token" content="{!! csrf_token() !!}" />
     <meta name="_siteurl" content="{!! url('/') !!}" />
     <script src="{{ asset('/local/public/assets/js/admin.js') }}"></script>
+    
+    @yield('page-scripts'); 
+
 </body>
 </html>

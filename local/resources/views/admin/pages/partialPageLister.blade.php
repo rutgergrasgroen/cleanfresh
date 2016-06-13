@@ -35,7 +35,7 @@
                 <span class="fa fa-edit" aria-hidden="true"></span>
             </a>
 
-            <a href="Pages/Delete/{{ $page['id'] }}" class="btn btn-outline btn-danger margin-left" data-method="delete" data-token="{{csrf_token()}}" data-confirm="Zeker weten?">
+            <a class="btn btn-outline btn-danger margin-left delete">
                 <span class="fa fa-trash" aria-hidden="true"></span>
             </a>
             

@@ -137,8 +137,7 @@
 		                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
 		                                </div>
 		                                <div class="timeline-body">
-		                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem dolorem quibusdam, tenetur commodi provident cumque magni voluptatem libero, quis rerum. Fugiat esse debitis optio, tempore. Animi officiis alias, officia repellendus.</p>
-		                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium maiores odit qui est tempora eos, nostrum provident explicabo dignissimos debitis vel! Adipisci eius voluptates, ad aut recusandae minus eaque facere.</p>
+                                            <p>Pagina: <b>Home</b> aangemaakt.</p>
 		                                </div>
 		                            </div>
 		                        </li>
@@ -150,7 +149,7 @@
 		                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
 		                                </div>
 		                                <div class="timeline-body">
-		                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus numquam facilis enim eaque, tenetur nam id qui vel velit similique nihil iure molestias aliquam, voluptatem totam quaerat, magni commodi quisquam.</p>
+                                            <p>Pagina: <b>Home</b> aangemaakt.</p>
 		                                </div>
 		                            </div>
 		                        </li>
@@ -160,7 +159,7 @@
 		                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
 		                                </div>
 		                                <div class="timeline-body">
-		                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptates est quaerat asperiores sapiente, eligendi, nihil. Itaque quos, alias sapiente rerum quas odit! Aperiam officiis quidem delectus libero, omnis ut debitis!</p>
+                                            <p>Pagina: <b>Home</b> aangemaakt.</p>
 		                                </div>
 		                            </div>
 		                        </li>
