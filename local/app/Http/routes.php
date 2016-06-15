@@ -35,9 +35,12 @@ Route::post('/cfadmin/Pages/Delete', 'Admin\PagesController@delete');
 Route::get('/cfadmin/Pages/Edit/{id}', 'Admin\PagesController@edit');
 Route::post('/cfadmin/Pages/Edit/{id}', 'Admin\PagesController@update');
 Route::get('/cfadmin/Pages/Edit/{id}/Content', 'Admin\PagesController@editContent');
-Route::post('/cfadmin/Pages/Edit/{id}/Content', 'Admin\PagesController@updateContent');
+Route::get('/cfadmin/Pages/Edit/{id}/Content/{blockid}', 'Admin\PagesController@editContent');
+Route::post('/cfadmin/Pages/Edit/{id}/Content/{blockid}', 'Admin\PagesController@updateContent');
 Route::get('/cfadmin/Pages/Edit/{id}/Image', 'Admin\PagesController@editImage');
 Route::post('/cfadmin/Pages/Edit/{id}/Image', 'Admin\PagesController@updateImage');
+Route::get('/cfadmin/Pages/Edit/{id}/SEO', 'Admin\PagesController@editSEO');
+Route::post('/cfadmin/Pages/Edit/{id}/SEO', 'Admin\PagesController@updateSEO');
 
 Route::get('/{slug?}', 'PagesController@show')
     ->where(['slug' => '.*']);

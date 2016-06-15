@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    Pagina template
+                    {cf_block_1}100,100{/cf_block_1}
                 </div>
             </div>
         </div>

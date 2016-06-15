@@ -17,12 +17,12 @@ elixir(function(mix) {
    	mix.copy('bower_components/raphael/raphael.min.js', 'public/assets/js');
     mix.copy('bower_components/morrisjs/morris.min.js', 'public/assets/js');
    	mix.styles([
+        'public/css/admin.css',
         'bower_components/bootstrap/dist/css/bootstrap.css',
         'bower_components/font-awesome/css/font-awesome.css',
         'bower_components/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css',
         'bower_components/startbootstrap-sb-admin-2/dist/css/timeline.css',
         'bower_components/morrisjs/morris.css',
-        'public/css/admin.css'
     ], 'public/assets/css/admin.css', './');
     mix.scripts([
         'bower_components/jquery/dist/jquery.js',

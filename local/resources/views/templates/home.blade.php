@@ -4,8 +4,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Title</h1>
-            Home template
+            {cf_block_1}50,100{/cf_block_1}
+            {cf_block_2}50,100{/cf_block_2}
         </div>
     </div>
 </div>

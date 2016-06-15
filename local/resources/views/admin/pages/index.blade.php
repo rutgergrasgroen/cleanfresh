@@ -29,7 +29,12 @@
                             </div>       
                             <div class="form-group">
                                 <label>Pagina template</label>
-                                <input class="form-control" name="template" type="text">
+                                <input class="form-control" name="template" id="template" type="hidden">
+                                <div class="templates">
+                                    @foreach($templates as $template)
+                                        {!! $template !!}
+                                    @endforeach
+                                </div>
                             </div>                   
                         </div>
                         <div class="modal-footer">

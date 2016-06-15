@@ -11,8 +11,11 @@
         <div class="col-lg-12">
 
             <ul class="nav nav-tabs">
-                <li class="active"><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}">Algemeen</a></li>
-                <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Content">Inhoud</a></li>
+                <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}">Algemeen</a></li>
+                @if(!empty($page->template))
+                    <li class="active"><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Content">Inhoud</a></li>
+                @endif
+                <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/SEO">SEO (Google)</a></li>
                 <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Image">Gekoppelde afbeelding</a></li>
             </ul>
 
@@ -20,40 +23,41 @@
 
         </div>
 
+        
+        @if($blockid > 0)
 
-            <form role="form" method="POST" action="{{ url('cfadmin/Pages/Edit', [$page->id]) }}">
-                {!! csrf_field() !!}
-                <div class="col-lg-6">
-                    <h3>Pagina instellingen</h3>
-                    <p>Wijzig hier uw pagina naam en stel eventueel een directe link in.</p>
-                    <div class="form-group">
-                        <label>Pagina titel</label>
-                        <input class="form-control" name="title" type="text" value="{{ $page->title }}">
-                    </div>
-                    <div class="form-group">
-                        <label>Directe link</label>
-                        <input class="form-control" name="link" type="text" value="{{ $page->link }}">
-                    </div>
+            <div class="col-lg-10">
+                <form role="form" method="POST" action="{{ url('cfadmin/Pages/Edit/' . $page->id . '/Content/' . $blockid) }}">
+                    {!! csrf_field() !!}
+                    {{ method_field('POST') }}
+                    <textarea name="block_content" id="editor1" rows="10" cols="80">
+                        @if(!empty($blocks[$blockid]))
+                            {{ $blocks[$blockid] }}
+                        @endif
+                    </textarea>
+
+                    <script src="{{ asset('/local/public/vendor/unisharp/laravel-ckeditor/ckeditor.js') }}"></script>
+                    <script>
+                        CKEDITOR.replace( 'block_content' );
+                    </script>
+
+                    <p>&nbsp;</p>
 
                     <button class="btn btn-primary btn-lg" type="submit">Opslaan</button>
-                </div>
+                </form>
+            </div>
 
-                <div class="col-lg-6">
-                    <h3>SEO</h3>
-                    <p>Vul hier uw zoekmachine instellingen in, als deze moeten afwijken van de standaard instellingen.</p>
-                    <div class="form-group">
-                        <label>SEO Titel</label>
-                        <input class="form-control" name="seo_title" type="text" value="{{ $page->seo_title }}">
-                    </div>
-                    <div class="form-group">
-                        <label>SEO omschrijving</label>
-                        <input class="form-control" name="seo_description" type="text" value="{{ $page->seo_description }}">
-                    </div> 
-                </div>
+            <div class="col-lg-2 templates edit small">
+                {!! $template !!}
+            </div>
 
-            </form>
+        @else
 
-        </div>
+            <div class="col-lg-12 templates edit">
+                {!! $template !!}
+            </div>
+
+        @endif
         
     </div>
     

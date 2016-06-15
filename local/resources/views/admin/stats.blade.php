@@ -7,6 +7,26 @@
 
             <h1 class="page-header">Statistieken</h1>
 
+            <form role="form" method="POST" action="" name="filter">
+                {!! csrf_field() !!}
+                <fieldset class="row">
+                    <div class="form-group col-lg-2">
+                        <select class="form-control" name="month" onchange="filter.submit()">
+                            @foreach($months as $month)
+                                <option value="{{ $month }}">{{ $month }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <select class="form-control" name="year" onchange="filter.submit()">
+                            @foreach($years as $year)
+                                <option value="{{ $year }}">{{ $year }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </fieldset>
+            </form>
+
             <div class="row">
 
                 @section('page-scripts')
@@ -21,18 +41,22 @@
                             Morris.Line({
                                 element: 'unieke-bezoekers',
                                 data: [
-                                    { year: '2008', value: 20 },
-                                    { year: '2009', value: 10 },
-                                    { year: '2010', value: 5 },
-                                    { year: '2011', value: 5 },
-                                    { year: '2012', value: 20 }
+                                    @foreach($data['visitors'] as $key => $value)
+                                        { 
+                                            day: '{{ $key+1 }}', 
+                                            pageviews: {{ $value['pageViews'] }}, 
+                                            visitors: {{ $value['visitors'] }} 
+                                        },
+                                    @endforeach
                                 ],
-                                xkey: 'year',
-                                ykeys: ['value'],
-                                labels: ['Value'],
+                                xkey: 'day',
+                                ykeys: ['pageviews', 'visitors'],
+                                labels: ['Pageviews', 'Visitors'],
+                                xLabels: 'days',
                                 pointSize: 2,
                                 hideHover: 'auto',
-                                resize: true
+                                resize: true,
+                                parseTime: false
                             });
 
                         });
@@ -44,7 +68,7 @@
                 <div class="col-lg-6">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Unieke bezoekers
+                            Unieke bezoekers & pagina views
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

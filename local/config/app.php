@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/cleanfresh'),
+    'url' => env('APP_URL', 'http://lokaal.clean-fresh.nl'),
 
     /*
     |--------------------------------------------------------------------------
@@ -159,8 +159,10 @@ return [
         /*
          * Custom providers
          */
+        Unisharp\Ckeditor\ServiceProvider::class,
         'Cviebrock\EloquentSluggable\SluggableServiceProvider',
         'Spatie\LaravelAnalytics\LaravelAnalyticsServiceProvider',
+
 
     ],
 

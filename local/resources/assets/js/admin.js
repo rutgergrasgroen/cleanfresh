@@ -120,6 +120,15 @@ $(document).ready(function(){
         }); 
 
     });
+
+    $('.templates .holder').on('click', function() {
+
+        var id = $(this).children('.template').attr("id");
+        $('input#template').val(id);
+        $('.templates .holder').removeClass('active');
+        $(this).addClass('active');
+
+    });
  
 });
 

@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use Validator;
+use App\Http\Traits\PagesTemplates;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 class PagesController extends Controller
 {
+
+    use PagesTemplates;
+
     /**
      * Create a new controller instance.
      *
@@ -34,8 +38,13 @@ class PagesController extends Controller
 
         $pages = $this->getAllPages($mainPages);
 
+        $templates = $this->getPagesTemplates();
+
         return view('admin/pages/index')
-            ->with('pages', $pages);
+            ->with([
+                'pages' => $pages,
+                'templates' => $templates
+            ]);
     }
 
     private function getAllPages($pages) {
@@ -152,15 +161,43 @@ class PagesController extends Controller
 
         $page = \App\Pages::where('id', '=', $id)->first();
 
-        return view('admin/pages/edit')->with('page', $page);
+        $templates = $this->getPagesTemplates($page->template);
+
+        return view('admin/pages/edit')
+            ->with([
+                'page' => $page,
+                'templates' => $templates
+            ]);
     }
 
-    public function editContent($id)
+    public function editContent($id, $blockid = 0)
+    {
+
+        $blocks = array();
+
+        $page = \App\Pages::where('id', '=', $id)->first();
+
+        if($blockid > 0) {
+            $blocks = $page->pageBlocks()->lists('content', 'block_id'); 
+        }
+
+        $template = $this->getCurrentPageTemplate($page->template, $blockid, $id);
+
+        return view('admin/pages/editContent')
+            ->with([
+                'page' => $page,
+                'blocks' => $blocks,
+                'blockid' => $blockid,
+                'template' => $template
+            ]);
+    }
+
+    public function editSEO($id)
     {
 
         $page = \App\Pages::where('id', '=', $id)->first();
 
-        return view('admin/pages/editContent')->with('page', $page);
+        return view('admin/pages/editSEO')->with('page', $page);
     }
 
     public function editImage($id)
@@ -178,6 +215,25 @@ class PagesController extends Controller
 
         $page->title = $request->input('title');
         $page->link = $request->input('link');
+        $page->template = $request->input('template');
+        $page->save();
+
+        $alert = array(
+            'html' => 'Pagina \''.$page->title.'\' is succesvol opgeslagen.',
+            'class' => 'success'
+        );
+
+        return redirect()->back()
+            ->with([
+                'alert' => $alert
+            ]);
+    }
+
+    public function updateSEO(Request $request, $id)
+    {
+
+        $page = \App\Pages::findOrFail($id);
+
         $page->seo_title = $request->input('seo_title');
         $page->seo_description = $request->input('seo_description');
         $page->save();
@@ -187,7 +243,28 @@ class PagesController extends Controller
             'class' => 'success'
         );
 
-        return redirect()->action('Admin\PagesController@edit', $id)
+        return redirect()->back()
+            ->with([
+                'alert' => $alert
+            ]);
+    }
+
+    public function updateContent(Request $request, $id, $blockid)
+    {
+
+        $page = \App\Pages::findOrFail($id);
+
+        $pagesBlocks = \App\PagesBlocks::firstOrNew(['page_id' => $id, 'block_id' => $blockid]);
+
+        $pagesBlocks->content = $request->block_content;
+        $pagesBlocks->save();
+
+        $alert = array(
+            'html' => 'Pagina \''.$page->title.'\' is succesvol opgeslagen.',
+            'class' => 'success'
+        );
+
+        return redirect()->back()
             ->with([
                 'alert' => $alert
             ]);

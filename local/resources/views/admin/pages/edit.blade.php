@@ -13,7 +13,10 @@
 
             <ul class="nav nav-tabs">
                 <li class="active"><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}">Algemeen</a></li>
-                <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Content">Inhoud</a></li>
+                @if(!empty($page->template))
+                    <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Content">Inhoud</a></li>
+                @endif
+                <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/SEO">SEO (Google)</a></li>
                 <li><a href="{{ url('cfadmin/Pages/Edit', [$page->id]) }}/Image">Gekoppelde afbeelding</a></li>
             </ul>
 
@@ -41,15 +44,15 @@
             </div>
 
             <div class="col-lg-6">
-                <h3>SEO</h3>
-                <p>Vul hier uw zoekmachine instellingen in, als deze moeten afwijken van de standaard instellingen.</p>
                 <div class="form-group">
-                    <label>SEO Titel</label>
-                    <input class="form-control" name="seo_title" type="text" value="{{ $page->seo_title }}">
-                </div>
-                <div class="form-group">
-                    <label>SEO omschrijving</label>
-                    <input class="form-control" name="seo_description" type="text" value="{{ $page->seo_description }}">
+                    <h3>Pagina template</h3>
+                    <p>Als u een andere template kiest, houd er dan rekening mee dat de content van de pagina verloren kan gaan.</p>
+                    <input class="form-control" name="template" id="template" type="hidden" value="{{ $page->template }}">
+                    <div class="templates">
+                        @foreach($templates as $template)
+                            {!! $template !!}
+                        @endforeach
+                    </div>
                 </div> 
             </div>
 

@@ -1,3 +1,141 @@
+.padding {
+  padding: 10px; }
+
+.padding-left {
+  padding-left: 10px; }
+
+.padding-right {
+  padding-right: 10px; }
+
+.margin {
+  margin: 5px; }
+
+.margin-left {
+  margin-left: 5px; }
+
+.margin-right {
+  margin-right: 5px; }
+
+.alert {
+  margin-bottom: 0;
+  margin-top: 30px; }
+
+.sortable {
+  list-style: none;
+  padding: 0;
+  margin: 0; }
+  .sortable ol {
+    list-style: none;
+    padding: 0;
+    margin-left: 35px; }
+  .sortable .placeholder {
+    background-color: #dfdfdf;
+    padding: 0 15px; }
+  .sortable .list-item {
+    list-style: none;
+    padding: 0; }
+    .sortable .list-item > div {
+      padding: 10px 15px 10px 54px;
+      position: relative;
+      width: auto;
+      background-color: #fdfdfd;
+      border: 1px solid #ddd;
+      display: block;
+      margin-bottom: -1px; }
+      .sortable .list-item > div a[disabled] {
+        cursor: default !important; }
+      .sortable .list-item > div .handle {
+        left: 2px;
+        padding: 18px;
+        position: absolute;
+        top: 2px;
+        cursor: move; }
+      .sortable .list-item > div .disclose {
+        cursor: pointer !important; }
+    .sortable .list-item ol,
+    .sortable .list-item.mjs-nestedSortable-collapsed > ol {
+      display: none; }
+    .sortable .list-item.mjs-nestedSortable-expanded > ol {
+      display: block; }
+
+.templates {
+  display: inline-block;
+  width: 100%; }
+  .templates .holder {
+    width: 130px;
+    height: 130px;
+    border: 1px solid #ccc;
+    padding: 3px;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    cursor: pointer; }
+    .templates .holder .template {
+      width: 100%;
+      height: 100%;
+      float: left;
+      position: relative; }
+      .templates .holder .template > div {
+        position: relative;
+        float: left;
+        border: 1px solid #fff;
+        background-color: #ddd; }
+    .templates .holder h3 {
+      width: 100%;
+      margin: 10px 0 0 0;
+      font-size: 15px;
+      float: left;
+      text-align: center; }
+    .templates .holder:hover, .templates .holder.active {
+      border-color: #2e6da4; }
+      .templates .holder:hover .template > div, .templates .holder.active .template > div {
+        background-color: #699ecd; }
+      .templates .holder:hover h3, .templates .holder.active h3 {
+        color: #2e6da4; }
+  .templates.edit .holder {
+    width: 100%;
+    height: 300px;
+    border: 0;
+    padding: 0;
+    cursor: default; }
+    .templates.edit .holder .template > div a {
+      font-size: 30px;
+      color: #999;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      margin-top: -15px;
+      margin-left: -15px; }
+    .templates.edit .holder .template > div.active {
+      background-color: #699ecd; }
+      .templates.edit .holder .template > div.active a {
+        color: #fff; }
+    .templates.edit .holder:hover, .templates.edit .holder.active {
+      border-color: #ddd; }
+      .templates.edit .holder:hover .template > div:not(.active), .templates.edit .holder.active .template > div:not(.active) {
+        background-color: #ddd; }
+  .templates.edit.small .holder {
+    height: 200px; }
+
+.modal {
+  text-align: center; }
+
+@media screen and (min-width: 768px) {
+  .modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%; } }
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle; }
+
+/*# sourceMappingURL=admin.css.map */
+
 /*!
  * Bootstrap v3.3.6 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -8968,82 +9106,5 @@ table.dataTable thead .sorting:after {
 }
 .morris-hover{position:absolute;z-index:1000}.morris-hover.morris-default-style{border-radius:10px;padding:6px;color:#666;background:rgba(255,255,255,0.8);border:solid 2px rgba(230,230,230,0.8);font-family:sans-serif;font-size:12px;text-align:center}.morris-hover.morris-default-style .morris-hover-row-label{font-weight:bold;margin:0.25em 0}
 .morris-hover.morris-default-style .morris-hover-point{white-space:nowrap;margin:0.1em 0}
-
-.padding {
-  padding: 10px; }
-
-.padding-left {
-  padding-left: 10px; }
-
-.padding-right {
-  padding-right: 10px; }
-
-.margin {
-  margin: 5px; }
-
-.margin-left {
-  margin-left: 5px; }
-
-.margin-right {
-  margin-right: 5px; }
-
-.alert {
-  margin-bottom: 0;
-  margin-top: 30px; }
-
-.sortable {
-  list-style: none;
-  padding: 0;
-  margin: 0; }
-  .sortable ol {
-    list-style: none;
-    padding: 0;
-    margin-left: 35px; }
-  .sortable .placeholder {
-    background-color: #dfdfdf;
-    padding: 0 15px; }
-  .sortable .list-item {
-    list-style: none;
-    padding: 0; }
-    .sortable .list-item > div {
-      padding: 10px 15px 10px 54px;
-      position: relative;
-      width: auto;
-      background-color: #fdfdfd;
-      border: 1px solid #ddd;
-      display: block;
-      margin-bottom: -1px; }
-      .sortable .list-item > div a[disabled] {
-        cursor: default !important; }
-      .sortable .list-item > div .handle {
-        left: 2px;
-        padding: 18px;
-        position: absolute;
-        top: 2px;
-        cursor: move; }
-      .sortable .list-item > div .disclose {
-        cursor: pointer !important; }
-    .sortable .list-item ol,
-    .sortable .list-item.mjs-nestedSortable-collapsed > ol {
-      display: none; }
-    .sortable .list-item.mjs-nestedSortable-expanded > ol {
-      display: block; }
-
-.modal {
-  text-align: center; }
-
-@media screen and (min-width: 768px) {
-  .modal:before {
-    display: inline-block;
-    vertical-align: middle;
-    content: " ";
-    height: 100%; } }
-
-.modal-dialog {
-  display: inline-block;
-  text-align: left;
-  vertical-align: middle; }
-
-/*# sourceMappingURL=admin.css.map */
 
 /*# sourceMappingURL=admin.css.map */

@@ -22,4 +22,10 @@ class Pages extends Model implements SluggableInterface
         'template'  => 'required',
     ];
 
+    public function pageBlocks() {  
+
+        return $this->hasMany('App\PagesBlocks', 'page_id', 'id');
+
+    }  
+
 }

@@ -8,7 +8,8 @@
         "php": ">=5.5.9",
         "laravel/framework": "5.2.*",
         "cviebrock/eloquent-sluggable": "^3.1",
-        "spatie/laravel-analytics": "^1.4"
+        "spatie/laravel-analytics": "^1.4",
+        "unisharp/laravel-ckeditor": "^4.5"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
@@ -19,7 +20,8 @@
     },
     "autoload": {
         "classmap": [
-            "database"
+            "database",
+            "app/Http/traits"
         ],
         "psr-4": {
             "App\\": "app/"

@@ -116,7 +116,7 @@
 		                <div class="panel-body">
 		                    <ul class="timeline">
 		                        <li>
-		                            <div class="timeline-badge"><i class="fa fa-edit"></i>
+		                            <div class="timeline-badge primary"><i class="fa fa-edit"></i>
 		                            </div>
 		                            <div class="timeline-panel">
 		                                <div class="timeline-heading">
@@ -172,7 +172,7 @@
 	            <div class="col-lg-6">
 		            <div class="panel panel-default">
 		                <div class="panel-heading">
-		                    <i class="fa fa-clock-o fa-fw"></i> Neem contact met ons op
+		                    <i class="fa fa-envelope-o fa-fw"></i> Neem contact met ons op
 		                </div>
 		                <div class="panel-body">		                	
 		                	<p>Loopt u tegen een probleem aan, heeft u een vraag over uitbreidingen voor uw CMS of wilt u meer informatie? Gebruik onderstaand formulier om contact met ons op te nemen.</p>
