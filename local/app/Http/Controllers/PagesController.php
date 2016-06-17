@@ -19,13 +19,18 @@ class PagesController extends Controller
             ->where('depth', '=', $depth-1)
             ->first();
 
+        $blocks = $page->pageBlocks()->lists('content', 'block_id');
+
         if(count($page) == 0) 
         {
             abort(404);
         }
 
-        return view('templates/page')
-                ->with('page', $page);
+        return view('templates/'. $page->template)
+            ->with([
+                'page' => $page,
+                'blocks' => $blocks
+            ]);
 
 
     }

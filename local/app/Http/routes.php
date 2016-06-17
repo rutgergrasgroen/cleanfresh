@@ -26,6 +26,7 @@ Route::get('/cfadmin', 'Admin\AdminController@index');
 
 Route::get('/cfadmin/Settings', 'Admin\SettingsController@index');
 Route::get('/cfadmin/Stats', 'Admin\StatsController@index');
+Route::post('/cfadmin/Stats', 'Admin\StatsController@index');
 
 Route::get('/cfadmin/Pages', 'Admin\PagesController@index');
 Route::post('/cfadmin/Pages', 'Admin\PagesController@store');

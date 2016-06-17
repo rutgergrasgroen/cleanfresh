@@ -32,6 +32,9 @@ class StatsController extends Controller
 
         $now = new DateTime();
 
+       
+
+
         if($request->year == $now->format('Y')-1) {
             $months = range(01, 12);
         } else {
@@ -57,7 +60,30 @@ class StatsController extends Controller
         $startDate = new DateTime($filterYear ."-". $filterMonth ."-01");
         $endDate = new DateTime($filterYear ."-". $filterMonth ."-". $numDays);
 
+        $monthsArray = [
+            1 => 'Januari',
+            2 => 'Februari',
+            3 => 'Maart',
+            4 => 'April',
+            5 => 'Mei',
+            6 => 'Juni',
+            7 => 'Juli',
+            8 => 'Augustus',
+            9 => 'September',
+            10 => 'Oktober',
+            11 => 'November',
+            12 => 'December'
+        ];
+
         $data['visitors'] = LaravelAnalytics::getVisitorsAndPageViewsForPeriod($startDate, $endDate);
+        $data['keywords'] = LaravelAnalytics::getTopKeyWordsForPeriod($startDate, $endDate);
+        $data['referrers'] = LaravelAnalytics::getTopReferrersForPeriod($startDate, $endDate, 30);
+        $data['browsers'] = LaravelAnalytics::getTopBrowsersForPeriod($startDate, $endDate, 30);
+        $data['pages'] = LaravelAnalytics::getMostVisitedPagesForPeriod($startDate, $endDate);
+
+        //echo "<pre>";
+        //print_r($data['pages']);
+        //echo "</pre>";
 
         return view('admin/stats')
             ->with([
@@ -65,7 +91,8 @@ class StatsController extends Controller
                 'months'=> $months,
                 'years'=> $years,
                 'filterMonth'=> $filterMonth,
-                'filterYear'=> $filterYear
+                'filterYear'=> $filterYear,
+                'monthsArray' => $monthsArray
             ]);
     }
 
