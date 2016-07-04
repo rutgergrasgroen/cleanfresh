@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Validator;
 use App\Http\Traits\PagesTemplates;
+use App\Http\Traits\ChangesLog;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -12,7 +13,7 @@ class PagesController extends Controller
 {
 
     use PagesTemplates;
-
+    use ChangesLog;
     /**
      * Create a new controller instance.
      *
@@ -104,6 +105,13 @@ class PagesController extends Controller
             $alert = array(
                 'html' => 'Pagina \''.$page->title.'\' is succesvol toegevoegd.',
                 'class' => 'success'
+            );
+
+            $this->log(
+                'pagina', 
+                'Nieuwe pagina: <b>'.$page->title.'</b>',
+                url()->current(),
+                auth()->user()
             );
 
             return redirect()->action('Admin\PagesController@edit', $page->id)
@@ -223,6 +231,13 @@ class PagesController extends Controller
             'class' => 'success'
         );
 
+        $this->log(
+            'pagina', 
+            'Pagina <b>'.$page->title.'</b> bewerkt.',
+            url()->current(),
+            auth()->user()
+        );
+
         return redirect()->back()
             ->with([
                 'alert' => $alert
@@ -241,6 +256,13 @@ class PagesController extends Controller
         $alert = array(
             'html' => 'Pagina \''.$page->title.'\' is succesvol opgeslagen.',
             'class' => 'success'
+        );
+
+        $this->log(
+            'pagina', 
+            'SEO van pagina <b>'.$page->title.'</b> bewerkt.',
+            url()->current(),
+            auth()->user()
         );
 
         return redirect()->back()
@@ -262,6 +284,13 @@ class PagesController extends Controller
         $alert = array(
             'html' => 'Pagina \''.$page->title.'\' is succesvol opgeslagen.',
             'class' => 'success'
+        );
+
+        $this->log(
+            'pagina', 
+            'Blokinhoud van pagina <b>'.$page->title.'</b> bewerkt.',
+            url()->current(),
+            auth()->user()
         );
 
         return redirect()->back()
