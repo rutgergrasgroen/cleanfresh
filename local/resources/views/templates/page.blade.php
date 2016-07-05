@@ -8,7 +8,7 @@
                 <div class="panel-heading">Welcome</div>
 
                 <div class="panel-body">
-                    {cf_block_1}100,100{/cf_block_1}
+                    {{ (isset($blocks[1]) ? $blocks[1] : "") }}<!--{cf_block_1}100,100{/cf_block_1}-->
                 </div>
             </div>
         </div>

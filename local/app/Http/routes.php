@@ -28,6 +28,9 @@ Route::get('/cfadmin/Settings', 'Admin\SettingsController@index');
 Route::get('/cfadmin/Stats', 'Admin\StatsController@index');
 Route::post('/cfadmin/Stats', 'Admin\StatsController@index');
 
+Route::get('/cfadmin/Media', 'Admin\MediaController@index');
+Route::post('/cfadmin/Media/FileUpload', 'Admin\MediaController@upload');
+
 Route::get('/cfadmin/Pages', 'Admin\PagesController@index');
 Route::post('/cfadmin/Pages', 'Admin\PagesController@store');
 Route::post('/cfadmin/Pages/SaveOrder', 'Admin\PagesController@saveOrder');

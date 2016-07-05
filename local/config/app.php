@@ -160,8 +160,10 @@ return [
          * Custom providers
          */
         Unisharp\Ckeditor\ServiceProvider::class,
+        Spatie\MediaLibrary\MediaLibraryServiceProvider::class,
         'Cviebrock\EloquentSluggable\SluggableServiceProvider',
         'Spatie\LaravelAnalytics\LaravelAnalyticsServiceProvider',
+
 
 
     ],

@@ -23,6 +23,7 @@ elixir(function(mix) {
         'bower_components/startbootstrap-sb-admin-2/dist/css/sb-admin-2.css',
         'bower_components/startbootstrap-sb-admin-2/dist/css/timeline.css',
         'bower_components/morrisjs/morris.css',
+        'bower_components/blueimp-file-upload/css/jquery.fileupload.css'
     ], 'public/assets/css/admin.css', './');
     mix.scripts([
         'bower_components/jquery/dist/jquery.js',
@@ -33,7 +34,9 @@ elixir(function(mix) {
         'bower_components/metisMenu/dist/metisMenu.js',
         'bower_components/startbootstrap-sb-admin-2/dist/js/sb-admin-2.js',
         'bower_components/bootbox.js/bootbox.js',
-        'resources/assets/js/admin.js'
+        'resources/assets/js/admin.js',
+        'bower_components/blueimp-file-upload/js/jquery.fileupload.js',
+        'bower_components/blueimp-file-upload/js/jquery.iframe-transport.js'
     ], 'public/assets/js/admin.js', './');
 });
 

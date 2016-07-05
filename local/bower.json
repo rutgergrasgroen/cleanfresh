@@ -39,7 +39,8 @@
     "raphael": "2.2.0",
     "datatables-responsive": "1.0.6",
     "bootstrap-social": "~4.8.0",
-    "flot.tooltip": "~0.8.4"
+    "flot.tooltip": "~0.8.4",
+    "blueimp-file-upload": "9.12.5"
   }
 }
 

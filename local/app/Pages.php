@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-
 class Pages extends Model implements SluggableInterface
 {
     

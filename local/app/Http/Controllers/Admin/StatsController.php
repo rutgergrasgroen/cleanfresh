@@ -32,13 +32,10 @@ class StatsController extends Controller
 
         $now = new DateTime();
 
-       
-
-
         if($request->year == $now->format('Y')-1) {
-            $months = range(01, 12);
+            $months = range(1, 12);
         } else {
-            $months = range(01, $now->format('n'));
+            $months = range(1, $now->format('n'));
         }
 
         $years = range($now->format('Y')-1, $now->format('Y'));
@@ -46,7 +43,7 @@ class StatsController extends Controller
         if(isset($request->month)) {
             $filterMonth = $request->month;
         } else {
-            $filterMonth = $now->format('m');
+            $filterMonth = $now->format('n');
         }
 
         if(isset($request->year)) {
