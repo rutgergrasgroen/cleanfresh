@@ -115,54 +115,40 @@
 		                <!-- /.panel-heading -->
 		                <div class="panel-body">
 		                    <ul class="timeline">
-		                        <li>
-		                            <div class="timeline-badge primary"><i class="fa fa-edit"></i>
-		                            </div>
-		                            <div class="timeline-panel">
-		                                <div class="timeline-heading">
-		                                    <h4 class="timeline-title">Paginabeheer</h4>
-		                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> 11 hours ago</small>
-		                                    </p>
-		                                </div>
-		                                <div class="timeline-body">
-		                                    <p>Pagina: <b>Home</b> aangemaakt.</p>
-		                                </div>
-		                            </div>
-		                        </li>
-		                        <li class="timeline-inverted">
-		                            <div class="timeline-badge warning"><i class="fa fa-credit-card"></i>
-		                            </div>
-		                            <div class="timeline-panel">
-		                                <div class="timeline-heading">
-		                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-		                                </div>
-		                                <div class="timeline-body">
-                                            <p>Pagina: <b>Home</b> aangemaakt.</p>
-		                                </div>
-		                            </div>
-		                        </li>
-		                        <li>
-		                            <div class="timeline-badge danger"><i class="fa fa-bomb"></i>
-		                            </div>
-		                            <div class="timeline-panel">
-		                                <div class="timeline-heading">
-		                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-		                                </div>
-		                                <div class="timeline-body">
-                                            <p>Pagina: <b>Home</b> aangemaakt.</p>
-		                                </div>
-		                            </div>
-		                        </li>
-		                        <li class="timeline-inverted">
-		                            <div class="timeline-panel">
-		                                <div class="timeline-heading">
-		                                    <h4 class="timeline-title">Lorem ipsum dolor</h4>
-		                                </div>
-		                                <div class="timeline-body">
-                                            <p>Pagina: <b>Home</b> aangemaakt.</p>
-		                                </div>
-		                            </div>
-		                        </li>
+
+                                @foreach($changes as $key => $change)
+
+                                    @if ($key % 2 == 0)
+                                        <li>
+                                    @else
+                                        <li class="timeline-inverted">
+                                    @endif 
+
+                                        @if ($change->module == "pagina")
+                                            <div class="timeline-badge primary"><i class="fa fa-edit"></i></div>
+                                        @endif 
+
+                                        @if ($change->module == "formulier")
+                                            <div class="timeline-badge warning"><i class="fa fa-envelope-o"></i></div>
+                                        @endif
+                                        
+                                        @if ($change->module == "media")
+                                            <div class="timeline-badge danger"><i class="fa fa-image"></i></div>
+                                        @endif
+
+    		                            <div class="timeline-panel">
+    		                                <div class="timeline-heading">
+    		                                    <h4 class="timeline-title">{{ $change->module }}</h4>
+    		                                    <p><small class="text-muted"><i class="fa fa-clock-o"></i> {{ $change->created_at->diffForHumans() }}</small></p>
+    		                                </div>
+    		                                <div class="timeline-body">
+    		                                    <p>{!! $change->description !!}</p>
+    		                                </div>
+    		                            </div>
+    		                        </li>
+
+                                @endforeach
+
 		                    </ul>
 		                </div>
 		                <!-- /.panel-body -->

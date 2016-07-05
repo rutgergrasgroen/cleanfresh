@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Hash;
 use DateTime;
-use Auth;
+use Carbon\Carbon;
 
 class AdminController extends Controller
 {
@@ -31,9 +31,16 @@ class AdminController extends Controller
     public function index()
     {
 
-        $user = Auth::user();
+        //Carbon::setLocale('nl');
+
+        $changes = \App\Changes::limit(20)->get();
+
         return view('admin/dashboard')
-            ->with('user', $user);
+            ->with([
+                'user' => auth()->user(),
+                'changes' => $changes
+            ]);
+
     }
 }
 
