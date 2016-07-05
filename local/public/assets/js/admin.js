@@ -41226,7 +41226,7 @@ $(document).ready(function(){
         dataType: 'json',
         done: function (e, data) {
             $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file.name).appendTo('#files');
+                $('<p/>').text(file).appendTo('#files');
             });
         },
         progressall: function (e, data) {

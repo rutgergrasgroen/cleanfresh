@@ -19,8 +19,7 @@ class MediaController extends Controller {
 
         $data = [];
 
-        $page = \App\Media::firstOrNew(['id' => 1]);
-        $page->addMediaFromUrl('http://www.grasgroen.com/cfsystem/layout/images/logo.png')->toCollection('images');
+        
 
         return view('admin/media/index')
             ->with(['data' => $data]);
@@ -29,14 +28,19 @@ class MediaController extends Controller {
 
     public function upload(Request $request){
 
-        dd($request->all());
+        $files = [];
 
-        return Response::json(
-            array(
-                "files" => array(
-                    "name" => "post"
-                ))
-        );
+        $media = \App\Media::firstOrNew(['id' => 1]);
+
+        foreach($request->file('files') as $file) {
+           $media->addMedia($file)->toCollection('images');
+           $files["name"] = $file->getClientOriginalName();
+        }
+
+        return response()
+            ->json([
+                "files" => $files
+            ]);
 
     }
 
