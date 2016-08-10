@@ -19,6 +19,7 @@ class CreateMediaTable extends Migration
             $table->string('file_name');
             $table->string('disk');
             $table->unsignedInteger('size');
+            $table->tinyInteger('parent')->default(0);
             $table->text('manipulations');
             $table->text('custom_properties');
             $table->unsignedInteger('order_column')->nullable();

@@ -17,12 +17,13 @@ class MediaController extends Controller {
 
     public function index(){
 
-        $data = [];
-
-        
+        $folders = \App\Media::where('parent', 0)
+            ->get();
 
         return view('admin/media/index')
-            ->with(['data' => $data]);
+            ->with([
+                'folders' => $folders
+            ]);
 
     }
 

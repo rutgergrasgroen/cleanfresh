@@ -57,6 +57,16 @@
 
                 @endforeach
 
+                @if(count($pages) == 0)
+
+                    <li>
+                        <div>
+                            Er zijn nog geen pagina's aangemaakt.
+                        </div>
+                    </li>
+
+                @endif
+
             </ol>
             
         </div>

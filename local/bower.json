@@ -41,6 +41,8 @@
     "bootstrap-social": "~4.8.0",
     "flot.tooltip": "~0.8.4",
     "blueimp-file-upload": "9.12.5"
+  },
+  "devDependencies": {
+    "blueimp-file-upload": "^9.12.5"
   }
 }
-
