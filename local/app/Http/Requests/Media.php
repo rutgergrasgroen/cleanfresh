@@ -21,8 +21,8 @@ class MediaFilesRequest extends Request {
     public function messages() {
         return [
             'upl.required'              =>  'You have to upload some file',
-            'upl.max'                     =>    '2MB max size',
-            'upl.mimes'                   =>    'Not a valid file'
+            'upl.max'                   =>    '2MB max size',
+            'upl.mimes'                 =>    'Not a valid file'
         ];
     }
 

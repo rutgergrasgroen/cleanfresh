@@ -1,4 +1,4 @@
-<li class="list-item" id="page_{{ $page['id'] }}" data-id="{{ $page['id'] }}">
+<li class="list-item" id="page_{{ $page['id'] }}" data-id="{{ $page['id'] }}" data-type="Page">
 
     <div>
         <span class="fa fa-arrows text-muted padding-right handle"></span>

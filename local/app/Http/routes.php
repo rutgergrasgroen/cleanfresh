@@ -29,13 +29,17 @@ Route::get('/cfadmin/Stats', 'Admin\StatsController@index');
 Route::post('/cfadmin/Stats', 'Admin\StatsController@index');
 
 Route::get('/cfadmin/Media', 'Admin\MediaController@index');
+Route::post('/cfadmin/Media', 'Admin\MediaController@store');
+Route::post('/cfadmin/Media/Delete', 'Admin\MediaController@deleteMedia');
+Route::post('/cfadmin/Folder/Delete', 'Admin\MediaController@deleteFolder');
+Route::get('/cfadmin/Media/{id}', 'Admin\MediaController@folder');
 Route::post('/cfadmin/Media/FileUpload', 'Admin\MediaController@upload');
 
 Route::get('/cfadmin/Pages', 'Admin\PagesController@index');
 Route::post('/cfadmin/Pages', 'Admin\PagesController@store');
 Route::post('/cfadmin/Pages/SaveOrder', 'Admin\PagesController@saveOrder');
 Route::post('/cfadmin/Pages/SaveStatus', 'Admin\PagesController@saveStatus');
-Route::post('/cfadmin/Pages/Delete', 'Admin\PagesController@delete');
+Route::post('/cfadmin/Page/Delete', 'Admin\PagesController@delete');
 Route::get('/cfadmin/Pages/Edit/{id}', 'Admin\PagesController@edit');
 Route::post('/cfadmin/Pages/Edit/{id}', 'Admin\PagesController@update');
 Route::get('/cfadmin/Pages/Edit/{id}/Content', 'Admin\PagesController@editContent');

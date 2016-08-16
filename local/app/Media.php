@@ -10,6 +10,10 @@ class Media extends Model implements HasMedia {
 
 	use HasMediaTrait;
 
+    public $rules = [
+        'name'     => 'required',
+    ];
+
     protected $fillable = ['name','path','description','ext','gallery_id','status'];
     protected $guarded = ['id'];
     

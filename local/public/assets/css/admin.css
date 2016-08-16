@@ -20,6 +20,9 @@
   margin-bottom: 0;
   margin-top: 30px; }
 
+.progress {
+  display: none; }
+
 .sortable {
   list-style: none;
   padding: 0;
@@ -44,6 +47,11 @@
       margin-bottom: -1px; }
       .sortable .list-item > div a[disabled] {
         cursor: default !important; }
+      .sortable .list-item > div .thumb {
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        padding: 5px;
+        max-width: 80px; }
       .sortable .list-item > div .handle {
         left: 2px;
         padding: 18px;
@@ -52,6 +60,8 @@
         cursor: move; }
       .sortable .list-item > div .disclose {
         cursor: pointer !important; }
+    .sortable .list-item.nohandle > div {
+      padding: 10px 15px; }
     .sortable .list-item ol,
     .sortable .list-item.mjs-nestedSortable-collapsed > ol {
       display: none; }

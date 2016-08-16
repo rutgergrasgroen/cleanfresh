@@ -41177,8 +41177,8 @@ $(document).ready(function(){
         var item = $(this).closest('li');
 
         bootbox.dialog({
-            message: "Weet je zeker dat je deze pagina wilt verwijderen?",
-            title: "Pagina verwijderen",
+            message: "Weet je zeker dat je dit item wilt verwijderen?",
+            title: "Verwijderen",
             buttons: {
                 main: {
                     label: "Annuleren",
@@ -41192,7 +41192,7 @@ $(document).ready(function(){
                         $.ajax({
 
                             type: 'POST',
-                            url: siteurl +'/cfadmin/Pages/Delete',
+                            url: siteurl +'/cfadmin/'+ item.attr("data-type") +'/Delete',
                             data: {
                                 'id': item.attr("data-id")
                             },
@@ -41220,16 +41220,24 @@ $(document).ready(function(){
 
     });
 
+    var folderid = $('meta[name="_folderid"]').attr('content');
+
     $('#fileupload').fileupload({
         url: siteurl +'/cfadmin/Media/FileUpload',
         dataType: 'json',
+        formData: { 
+            folderid: folderid 
+        },
         done: function (e, data) {
-            $.each(data.result.files, function (index, file) {
-                $('<p/>').text(file).appendTo('#files');
-            });
+            //$.each(data.result.files, function (index, file) {
+                //$('<p/>').text(file).appendTo('#files');
+            //});
+            location.reload(); 
         },
         progressall: function (e, data) {
             var progress = parseInt(data.loaded / data.total * 100, 10);
+           
+            $('.progress').show();
             $('#progress .progress-bar').css(
                 'width',
                 progress + '%'

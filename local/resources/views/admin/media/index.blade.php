@@ -43,12 +43,12 @@
 
                 @foreach($folders as $id => $folder)
 
-                    <li class="list-item" id="folder_{{ $folder['id'] }}" data-id="{{ $folder['id'] }}">
+                    <li class="list-item nohandle" id="folder_{{ $folder['id'] }}" data-id="{{ $folder['id'] }}" data-type="Folder">
 
                         <div>
 
                             <a class="btn btn-outline btn-default icon disclose" disabled>
-                                <span class="fa fa-file-text-o text-muted" aria-hidden="true"></span> 
+                                <span class="fa fa-folder text-muted" aria-hidden="true"></span> 
                             </a>
 
                             <strong class="padding"> 
@@ -57,7 +57,7 @@
 
                             <div class="pull-right">
 
-                                <a href="Media/Edit/{{ $folder['id'] }}" class="btn btn-outline btn-warning margin-left">
+                                <a href="Media/{{ $folder['id'] }}" class="btn btn-outline btn-warning margin-left">
                                     <span class="fa fa-edit" aria-hidden="true"></span>
                                 </a>
 
