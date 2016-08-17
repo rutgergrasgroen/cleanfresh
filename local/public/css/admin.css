@@ -68,6 +68,18 @@
     .sortable .list-item.mjs-nestedSortable-expanded > ol {
       display: block; }
 
+.navbar-static-top {
+  background-color: #337ab7 !important; }
+  .navbar-static-top .navbar-brand,
+  .navbar-static-top .dropdown-toggle {
+    color: white !important; }
+    .navbar-static-top .navbar-brand:hover, .navbar-static-top .navbar-brand:focus,
+    .navbar-static-top .dropdown-toggle:hover,
+    .navbar-static-top .dropdown-toggle:focus {
+      background-color: rgba(255, 255, 255, 0.1) !important; }
+  .navbar-static-top .icon-bar {
+    background-color: white !important; }
+
 .templates {
   display: inline-block;
   width: 100%; }

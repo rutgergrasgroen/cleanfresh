@@ -103,6 +103,24 @@
 
 }
 
+.navbar-static-top {
+    background-color: #337ab7 !important;
+
+    .navbar-brand,
+    .dropdown-toggle {
+        color: white !important;
+
+        &:hover,
+        &:focus {
+            background-color: rgba(white, 0.1) !important;
+        }
+    }
+
+    .icon-bar {
+        background-color: white !important;
+    }
+}
+
 .templates {
     display: inline-block;
     width:100%;
